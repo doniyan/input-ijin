@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Data Absensi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background: #007BFF;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      border: none;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Form Input Absensi</h2>
+    <form id="absenForm">
+      <label for="kodeSiswa">Kode Siswa (NIS):</label>
+      <input type="text" id="kodeSiswa" name="kodeSiswa" required>
+
+      <label for="tipe">Tipe:</label>
+      <select id="tipe" name="tipe" required>
+        <option value="">--Pilih--</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Izin">Izin</option>
+        <option value="Sakit">Sakit</option>
+      </select>
+
+      <label for="status">Status:</label>
+      <select id="status" name="status" required>
+        <option value="">--Pilih--</option>
+        <option value="Valid">Valid</option>
+        <option value="Invalid">Invalid</option>
+      </select>
+
+      <button type="submit">Simpan</button>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    document.getElementById("absenForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const kodeSiswa = document.getElementById("kodeSiswa").value;
+      const tipe = document.getElementById("tipe").value;
+      const status = document.getElementById("status").value;
+
+      const data = { kodeSiswa, tipe, status };
+
+      // Ganti dengan URL Web App Google Apps Script kamu
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzfq7T023JgO-YGdiztuUr5fKoNNAxM4ItMpYda7Un8YZ64wcBehHKTOzEfUr__vReB/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => res.text())
+      .then(result => {
+        document.getElementById("message").innerText = "✅ Data berhasil disimpan!";
+        document.getElementById("absenForm").reset();
+      })
+      .catch(err => {
+        document.getElementById("message").innerText = "❌ Gagal menyimpan data.";
+        console.error(err);
+      });
+    });
+  </script>
+</body>
+</html>
