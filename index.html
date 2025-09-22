@@ -298,55 +298,86 @@
     </div>
     
     <form id="absenForm">
-      <div class="form-group">
-        <label for="nis">
-          <i class="fas fa-id-card"></i>
-          Kode Siswa (NIS)
-        </label>
-        <input 
-          type="text" 
-          name="nis" 
-          id="nis"
-          placeholder="Masukkan Kode Siswa atau NIS" 
-          required
-          autocomplete="off"
-        >
-      </div>
+  <div class="form-group">
+    <label for="nama">
+      <i class="fas fa-user"></i>
+      Nama Siswa
+    </label>
+    <input 
+      type="text" 
+      name="nama" 
+      id="nama"
+      placeholder="Masukkan Nama Siswa" 
+      required
+      autocomplete="off"
+    >
+  </div>
 
-      <div class="form-group">
-        <label for="tipe">
-          <i class="fas fa-tags"></i>
-          Tipe Absensi
-        </label>
-        <select name="tipe" id="tipe" required>
-          <option value="Izin">📋 Izin</option>
-          <option value="Sakit">🏥 Sakit</option>
-          <option value="Alpha">❌ Alpha</option>
-        </select>
-      </div>
+  <div class="form-group">
+    <label for="nis">
+      <i class="fas fa-id-card"></i>
+      Kode Siswa (NIS)
+    </label>
+    <input 
+      type="text" 
+      name="nis" 
+      id="nis"
+      placeholder="Masukkan Kode Siswa atau NIS" 
+      required
+      autocomplete="off"
+    >
+  </div>
 
-      <div class="form-group">
-        <label for="status">
-          <i class="fas fa-check-circle"></i>
-          Status Validasi
-        </label>
-        <select name="status" id="status-select" required>
-          <option value="Valid">✅ Valid</option>
-          <option value="Tidak Valid">❌ Tidak Valid</option>
-        </select>
-      </div>
+  <div class="form-group">
+    <label for="kelas">
+      <i class="fas fa-school"></i>
+      Kelas
+    </label>
+    <input 
+      type="text" 
+      name="kelas" 
+      id="kelas"
+      placeholder="Masukkan Kelas (misal: 6A)" 
+      required
+      autocomplete="off"
+    >
+  </div>
 
-      <div class="button-group">
-        <button type="button" class="btn-secondary" onclick="clearForm()">
-          <i class="fas fa-eraser"></i>
-          Reset
-        </button>
-        <button type="submit" class="btn-primary">
-          <i class="fas fa-save"></i>
-          <span id="submitText">Simpan</span>
-        </button>
-      </div>
-    </form>
+  <div class="form-group">
+    <label for="tipe">
+      <i class="fas fa-tags"></i>
+      Tipe Absensi
+    </label>
+    <select name="tipe" id="tipe" required>
+      <option value="Izin">📋 Izin</option>
+      <option value="Sakit">🏥 Sakit</option>
+      <option value="Alpha">❌ Alpha</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="status">
+      <i class="fas fa-check-circle"></i>
+      Status Validasi
+    </label>
+    <select name="status" id="status-select" required>
+      <option value="Valid">✅ Valid</option>
+      <option value="Tidak Valid">❌ Tidak Valid</option>
+    </select>
+  </div>
+
+  <div class="button-group">
+    <button type="button" class="btn-secondary" onclick="clearForm()">
+      <i class="fas fa-eraser"></i>
+      Reset
+    </button>
+    <button type="submit" class="btn-primary">
+      <i class="fas fa-save"></i>
+      <span id="submitText">Simpan</span>
+    </button>
+  </div>
+</form>
+
     
     <div id="statusMsg"></div>
   </div>
@@ -464,5 +495,3 @@
   </script>
 </body>
 </html>
-
-
