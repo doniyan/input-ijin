@@ -2,495 +2,232 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Input Absensi</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <title>Form Absensi</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
-      font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      margin: 0;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 20px;
+      justify-content: center;
     }
-
-    .background-pattern {
+    
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      margin: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+    }
+    
+    .container::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.1;
-      background-image: 
-        radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
-        radial-gradient(circle at 75% 75%, white 2px, transparent 2px);
-      background-size: 50px 50px;
-      pointer-events: none;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+      border-radius: 20px 20px 0 0;
     }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 
-        0 25px 50px rgba(0,0,0,0.1),
-        0 0 0 1px rgba(255,255,255,0.2);
-      width: 100%;
-      max-width: 420px;
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-
-    .header {
+    
+    h2 { 
       text-align: center;
       margin-bottom: 30px;
-    }
-
-    .header h2 {
-      font-size: 2rem;
+      color: #2c3e50;
+      font-size: 28px;
       font-weight: 700;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
-    .header p {
-      color: #6b7280;
-      font-size: 0.95rem;
-      margin-top: 5px;
-    }
-
-    .form-group {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
+    
+    label { 
       display: block;
+      margin: 20px 0 8px;
+      color: #34495e;
       font-weight: 600;
-      font-size: 0.9rem;
-      color: #374151;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-
-    .form-group i {
-      color: #667eea;
-      width: 16px;
-    }
-
+    
     input, select {
       width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #e5e7eb;
+      padding: 15px 18px;
+      margin-bottom: 20px;
       border-radius: 12px;
-      font-size: 15px;
+      border: 2px solid #e1e8ed;
+      font-size: 16px;
       transition: all 0.3s ease;
-      background: white;
-      color: #374151;
-      outline: none;
+      background: #fafbfc;
+      color: #2c3e50;
     }
-
+    
     input:focus, select:focus {
+      outline: none;
       border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-      transform: translateY(-1px);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+      transform: translateY(-2px);
     }
-
-    input::placeholder {
-      color: #9ca3af;
-      font-weight: 400;
-    }
-
+    
     select {
       cursor: pointer;
       appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 16px;
-      padding-right: 40px;
+      background-position: right 15px center;
+      background-size: 20px;
+      padding-right: 45px;
     }
-
-    .button-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
+    
     button {
-      padding: 14px 20px;
-      border: none;
+      width: 100%;
+      padding: 16px;
+      margin-top: 10px;
       border-radius: 12px;
-      font-size: 15px;
-      font-weight: 600;
+      border: none;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
       cursor: pointer;
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
     }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
     }
-
-    .btn-secondary {
-      background: white;
-      color: #6b7280;
-      border: 2px solid #e5e7eb;
+    
+    button:hover::before {
+      left: 100%;
     }
-
-    .btn-secondary:hover {
-      background: #f9fafb;
-      border-color: #d1d5db;
+    
+    button:active {
       transform: translateY(-1px);
     }
-
-    #status {
-      margin-top: 20px;
+    
+    #result {
       text-align: center;
       font-weight: 600;
-      padding: 12px;
+      margin-top: 25px;
+      padding: 15px;
       border-radius: 10px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
+      font-size: 15px;
       min-height: 20px;
+      transition: all 0.3s ease;
     }
-
-    #status.show {
-      opacity: 1;
-      transform: translateY(0);
+    
+    #result:not(:empty) {
+      background: rgba(46, 204, 113, 0.1);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      color: #27ae60;
+      animation: slideIn 0.5s ease;
     }
-
-    .status-success {
-      background: #d1fae5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-    }
-
-    .status-error {
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fca5a5;
-    }
-
-    .loading {
-      display: inline-block;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes slideUp {
+    
+    @keyframes slideIn {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
-    .container {
-      animation: slideUp 0.6s ease;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      body {
-        padding: 15px;
-        align-items: flex-start;
-        padding-top: 60px;
-      }
-
-      .container {
-        padding: 30px 25px;
-        max-width: 100%;
-        width: 100%;
-      }
-
-      .header h2 {
-        font-size: 1.75rem;
-      }
-
-      .button-group {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      input, select, button {
-        font-size: 16px; /* Prevents zoom on iOS */
-      }
-    }
-
+    
+    /* Responsive design */
     @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
       .container {
-        padding: 25px 20px;
-        border-radius: 16px;
+        padding: 30px 20px;
+        border-radius: 15px;
       }
-
-      .header h2 {
-        font-size: 1.5rem;
+      
+      h2 {
+        font-size: 24px;
       }
-
-      input, select {
-        padding: 12px 14px;
-      }
-
-      button {
-        padding: 12px 18px;
+      
+      input, select, button {
+        padding: 14px 16px;
+        font-size: 15px;
       }
     }
-
-    /* Accessibility improvements */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+    
+    /* Loading state */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
     }
-
-    /* Focus styles for accessibility */
-    button:focus-visible, input:focus-visible, select:focus-visible {
-      outline: 2px solid #667eea;
-      outline-offset: 2px;
+    
+    .loading button {
+      background: #95a5a6;
+      cursor: not-allowed;
     }
   </style>
 </head>
 <body>
-  <div class="background-pattern"></div>
-  
   <div class="container">
-    <div class="header">
-      <h2><i class="fas fa-clipboard-check"></i> Form Input Absensi</h2>
-      <p>Sistem Input Data Kehadiran Siswa</p>
-    </div>
-    
-    <form id="absenForm">
-  <div class="form-group">
-    <label for="nama">
-      <i class="fas fa-user"></i>
-      Nama Siswa
-    </label>
-    <input 
-      type="text" 
-      name="nama" 
-      id="nama"
-      placeholder="Masukkan Nama Siswa" 
-      required
-      autocomplete="off"
-    >
+    <h2>Form Ijin Siswa</h2>
+    <form id="absensiForm">
+      <label for="nis">NIS</label>
+      <input type="text" id="nis" name="nis" required>
+      <label for="tipe">Tipe Absensi</label>
+      <select id="tipe" name="tipe" required>
+        <option value="">-- Pilih --</option>
+        <option value="Masuk">Masuk</option>
+        <option value="Izin">Izin</option>
+        <option value="Alpha">Alpha</option>
+        <option value="Sakit">Sakit</option>
+      </select>
+      <button type="submit">Kirim</button>
+    </form>
+    <div id="result"></div>
   </div>
-
-  <div class="form-group">
-    <label for="nis">
-      <i class="fas fa-id-card"></i>
-      Kode Siswa (NIS)
-    </label>
-    <input 
-      type="text" 
-      name="nis" 
-      id="nis"
-      placeholder="Masukkan Kode Siswa atau NIS" 
-      required
-      autocomplete="off"
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="kelas">
-      <i class="fas fa-school"></i>
-      Kelas
-    </label>
-    <input 
-      type="text" 
-      name="kelas" 
-      id="kelas"
-      placeholder="Masukkan Kelas (misal: 6A)" 
-      required
-      autocomplete="off"
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="tipe">
-      <i class="fas fa-tags"></i>
-      Tipe Absensi
-    </label>
-    <select name="tipe" id="tipe" required>
-      <option value="Izin">📋 Izin</option>
-      <option value="Sakit">🏥 Sakit</option>
-      <option value="Alpha">❌ Alpha</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="status">
-      <i class="fas fa-check-circle"></i>
-      Status Validasi
-    </label>
-    <select name="status" id="status-select" required>
-      <option value="Valid">✅ Valid</option>
-      <option value="Tidak Valid">❌ Tidak Valid</option>
-    </select>
-  </div>
-
-  <div class="button-group">
-    <button type="button" class="btn-secondary" onclick="clearForm()">
-      <i class="fas fa-eraser"></i>
-      Reset
-    </button>
-    <button type="submit" class="btn-primary">
-      <i class="fas fa-save"></i>
-      <span id="submitText">Simpan</span>
-    </button>
-  </div>
-</form>
-
-    
-    <div id="statusMsg"></div>
-  </div>
-  
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzLNxYuJ55ZDijq2w8M9XINNckX95Fx_ztu6X8JzroUqN1pV7WdeUguu_cMKkkfx04f/exec"; // ganti dengan URL web app kamu
-    
-    // Clear/Reset form function
-    function clearForm() {
-      document.getElementById("absenForm").reset();
-      document.getElementById("status").innerHTML = "";
-      document.getElementById("status").className = "";
-      
-      // Focus on first input after reset
-      document.getElementById("nis").focus();
-      
-      // Add animation feedback
-      const container = document.querySelector('.container');
-      container.style.transform = 'scale(0.98)';
-      setTimeout(() => {
-        container.style.transform = 'scale(1)';
-      }, 150);
-    }
-
-    // Show status message with animation
-  function showStatus(message, isError = false) {
-  const statusElement = document.getElementById("statusMsg");
-  statusElement.textContent = message;
-  statusElement.style.color = isError ? "red" : "green";
-    
-      // Auto hide after 3 seconds for success messages
-      if (!isError) {
-        setTimeout(() => {
-          statusElement.classList.remove("show");
-          setTimeout(() => {
-            statusElement.innerHTML = "";
-            statusElement.className = "";
-          }, 300);
-        }, 3000);
-      }
-    }
-
-    // Form submission handler
-    document.getElementById("absenForm").addEventListener("submit", e => {
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxciZ-IfXJd4P_dKc1YCsJehNKzU89aJlgvno3PuUyrbbp0JyDu3LjK9ZOfPWZ9vwW3/exec"; // Ganti dengan URL Web App kamu
+    document.getElementById("absensiForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      
-      const submitButton = e.target.querySelector('button[type="submit"]');
-      const submitText = document.getElementById("submitText");
-      const originalText = submitText.innerHTML;
-      
-      // Show loading state
-      submitButton.disabled = true;
-      submitText.innerHTML = '<i class="fas fa-spinner loading"></i> Menyimpan...';
-      
-      const formData = new FormData(e.target);
-      
+      const formData = new FormData(this);
       fetch(scriptURL, { method: "POST", body: formData })
-        .then(res => res.text())
-        .then(txt => {
-          showStatus("✅ " + txt, false);
-          
-          // Clear form after successful submission
-          setTimeout(() => {
-            clearForm();
-          }, 1500);
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("result").innerText = data;
+          document.getElementById("absensiForm").reset();
         })
-        .catch(err => {
-          showStatus("❌ Gagal menyimpan data. Silakan coba lagi.", true);
-          console.error(err);
-        })
-        .finally(() => {
-          // Reset button state
-          submitButton.disabled = false;
-          submitText.innerHTML = originalText;
+        .catch(error => {
+          document.getElementById("result").innerText = "❌ Gagal mengirim: " + error;
         });
-    });
-
-    // Add keyboard shortcuts
-    document.addEventListener('keydown', function(e) {
-      // Ctrl + R or Cmd + R to reset form
-      if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
-        e.preventDefault();
-        clearForm();
-      }
-      
-      // Escape to clear status message
-      if (e.key === 'Escape') {
-        const statusElement = document.getElementById("status");
-        if (statusElement.classList.contains('show')) {
-          statusElement.classList.remove('show');
-        }
-      }
-    });
-
-    // Auto-focus on first input when page loads
-    window.addEventListener('load', function() {
-      document.getElementById("nis").focus();
-    });
-
-    // Add input validation feedback
-    const inputs = document.querySelectorAll('input, select');
-    inputs.forEach(input => {
-      input.addEventListener('invalid', function() {
-        this.style.borderColor = '#ef4444';
-        this.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
-      });
-      
-      input.addEventListener('input', function() {
-        if (this.validity.valid) {
-          this.style.borderColor = '#10b981';
-          this.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
-        }
-      });
     });
   </script>
 </body>
