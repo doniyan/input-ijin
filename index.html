@@ -348,7 +348,7 @@
       </div>
     </form>
     
-    <div id="status"></div>
+    <div id="statusMsg"></div>
   </div>
   
   <script>
@@ -372,11 +372,11 @@
     }
 
     // Show status message with animation
-    function showStatus(message, isError = false) {
-      const statusElement = document.getElementById("status");
-      statusElement.innerHTML = message;
-      statusElement.className = isError ? "show status-error" : "show status-success";
-      
+  function showStatus(message, isError = false) {
+  const statusElement = document.getElementById("statusMsg");
+  statusElement.textContent = message;
+  statusElement.style.color = isError ? "red" : "green";
+    
       // Auto hide after 3 seconds for success messages
       if (!isError) {
         setTimeout(() => {
@@ -464,3 +464,4 @@
   </script>
 </body>
 </html>
+
