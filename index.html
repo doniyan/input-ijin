@@ -2,160 +2,39 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Form Absensi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Absensi Siswa</title>
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
     
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 20px;
-      margin: 0;
-      min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
     }
     
     .container {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 40px 30px;
+      background: #fff;
+      padding: 40px 35px;
       border-radius: 20px;
-      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       width: 100%;
-      margin: auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      position: relative;
-    }
-    
-    .container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-      border-radius: 20px 20px 0 0;
-    }
-    
-    h2 { 
-      text-align: center;
-      margin-bottom: 30px;
-      color: #2c3e50;
-      font-size: 28px;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    label { 
-      display: block;
-      margin: 20px 0 8px;
-      color: #34495e;
-      font-weight: 600;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    input, select {
-      width: 100%;
-      padding: 15px 18px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      border: 2px solid #e1e8ed;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      background: #fafbfc;
-      color: #2c3e50;
-    }
-    
-    input:focus, select:focus {
-      outline: none;
-      border-color: #667eea;
-      background: white;
-      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-      transform: translateY(-2px);
-    }
-    
-    select {
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 15px center;
-      background-size: 20px;
-      padding-right: 45px;
-    }
-    
-    button {
-      width: 100%;
-      padding: 16px;
-      margin-top: 10px;
-      border-radius: 12px;
-      border: none;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-    }
-    
-    button:hover::before {
-      left: 100%;
-    }
-    
-    button:active {
-      transform: translateY(-1px);
-    }
-    
-    #result {
-      text-align: center;
-      font-weight: 600;
-      margin-top: 25px;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 15px;
-      min-height: 20px;
-      transition: all 0.3s ease;
-    }
-    
-    #result:not(:empty) {
-      background: rgba(46, 204, 113, 0.1);
-      border: 1px solid rgba(46, 204, 113, 0.3);
-      color: #27ae60;
-      animation: slideIn 0.5s ease;
+      max-width: 450px;
+      animation: slideIn 0.5s ease-out;
     }
     
     @keyframes slideIn {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-30px);
       }
       to {
         opacity: 1;
@@ -163,71 +42,224 @@
       }
     }
     
-    /* Responsive design */
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      .container {
-        padding: 30px 20px;
-        border-radius: 15px;
-      }
-      
-      h2 {
-        font-size: 24px;
-      }
-      
-      input, select, button {
-        padding: 14px 16px;
-        font-size: 15px;
-      }
+    .header {
+      text-align: center;
+      margin-bottom: 35px;
     }
     
-    /* Loading state */
+    .icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    
+    h2 {
+      color: #667eea;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    label {
+      display: block;
+      color: #374151;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 2px solid #e5e7eb;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      background: #f9fafb;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: #667eea;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+    
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 16px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 14px;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    #result.success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 2px solid #10b981;
+    }
+    
+    #result.error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 2px solid #ef4444;
+    }
+    
     .loading {
-      opacity: 0.7;
-      pointer-events: none;
+      display: none;
+      text-align: center;
+      color: #667eea;
+      margin-top: 15px;
     }
     
-    .loading button {
-      background: #95a5a6;
-      cursor: not-allowed;
+    .loading.show {
+      display: block;
+    }
+    
+    .spinner {
+      border: 3px solid #f3f4f6;
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 10px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Form Ijin Siswa</h2>
-    <form id="absensiForm">
-      <label for="nis">NIS</label>
-      <input type="text" id="nis" name="nis" required>
-      <label for="tipe">Tipe Absensi</label>
-      <select id="tipe" name="tipe" required>
-        <option value="">-- Pilih --</option>
-        <option value="Masuk">Masuk</option>
-        <option value="Izin">Izin</option>
-        <option value="Alpha">Alpha</option>
-        <option value="Sakit">Sakit</option>
-      </select>
-      <button type="submit">Kirim</button>
+    <div class="header">
+      <div class="icon">📋</div>
+      <h2>Form Input Absensi</h2>
+      <p class="subtitle">Izin, Sakit, dan Alpha</p>
+    </div>
+    
+    <form id="absenForm">
+      <div class="form-group">
+        <label>📝 Nomor Induk Siswa (NIS)</label>
+        <input type="text" name="nis" placeholder="Contoh: 12345678" required>
+      </div>
+      
+      <div class="form-group">
+        <label>📅 Tanggal</label>
+        <input type="date" name="tanggal" required>
+      </div>
+      
+      <div class="form-group">
+        <label>📊 Tipe Absensi</label>
+        <select name="tipe" required>
+          <option value="Izin">🟢 Izin</option>
+          <option value="Sakit">🟡 Sakit</option>
+          <option value="Alpha">🔴 Alpha</option>
+        </select>
+      </div>
+      
+      <button type="submit">✓ Kirim Absensi</button>
     </form>
+    
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Mengirim data...</p>
+    </div>
+    
     <div id="result"></div>
   </div>
+  
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxciZ-IfXJd4P_dKc1YCsJehNKzU89aJlgvno3PuUyrbbp0JyDu3LjK9ZOfPWZ9vwW3/exec"; // Ganti dengan URL Web App kamu
-    document.getElementById("absensiForm").addEventListener("submit", function(e) {
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzFwkO2QSzyT0R3n-HzlWkz7-66qpFgA06yLUwwzECs2eyi20GRrKskNgxNoFw2SorO/exec";
+    const form = document.getElementById("absenForm");
+    const resultDiv = document.getElementById("result");
+    const loadingDiv = document.getElementById("loading");
+    
+    // Set tanggal hari ini sebagai default
+    document.querySelector('input[name="tanggal"]').valueAsDate = new Date();
+    
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
+      
+      // Reset dan tampilkan loading
+      resultDiv.innerHTML = "";
+      resultDiv.className = "";
+      loadingDiv.classList.add("show");
+      
       const formData = new FormData(this);
-      fetch(scriptURL, { method: "POST", body: formData })
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("result").innerText = data;
-          document.getElementById("absensiForm").reset();
-        })
-        .catch(error => {
-          document.getElementById("result").innerText = "❌ Gagal mengirim: " + error;
-        });
+      
+      fetch(scriptURL, { 
+        method: "POST", 
+        body: formData 
+      })
+      .then(response => response.text())
+      .then(text => {
+        loadingDiv.classList.remove("show");
+        resultDiv.innerHTML = "✓ " + text;
+        resultDiv.className = "success";
+        
+        // Reset form setelah berhasil
+        setTimeout(() => {
+          form.reset();
+          document.querySelector('input[name="tanggal"]').valueAsDate = new Date();
+        }, 1000);
+      })
+      .catch(err => {
+        loadingDiv.classList.remove("show");
+        resultDiv.innerHTML = "✗ Gagal mengirim data. Silakan coba lagi.";
+        resultDiv.className = "error";
+        console.error("Error:", err);
+      });
     });
   </script>
 </body>
